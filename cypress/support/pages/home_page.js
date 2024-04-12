@@ -3,7 +3,7 @@
 import 'cypress-real-events/support';
 
 // Elements
-
+// Variaveis para facilitar a manutenção do codigo
 const elements = {
     buttons: {
         shopping: 'p > a',
@@ -20,23 +20,27 @@ const elements = {
     },
     div: {
         topHeaderShop: '.top_header_left',
-        topHeaderUserArea: '.top_header_right'
+        topHeaderUserArea: '.top_header_right',
+        dropDownShop: '.has-dropdown.has-megaitem',
+        dropDownMegaMenu: '.mega-menu',
+        dropDownMenuBanner: '.menu-banner',
+        dropDownMenuHome: '#menuHome',
+        dropDownHomeSubHome: '.sub-menu',
 
     }
 }
 
 
-
+// Função que torna os elementos escondidos do dropdown visiveis, invoca o css e altera as caracteristicas
 function invokeCss(selector) {
     return cy.get(selector).invoke('css', {
         visibility: 'visible',
         opacity: '1',
         transform: 'none'
     })
-    .should('be.visible', { timeout: 3000 })
-    
-    
+    .should('be.visible', { timeout: 3000 }) // Garante que o elemento fique visivel, e aguarda até 3 segundos até que se torne visivel
 }
+
 
 
 
@@ -46,6 +50,7 @@ export default{
 
     // General
         // URL
+        // Verifica se a url esta correta, (URL base + a url esperada após o /)
         checkUrl(urlEsperada){
             cy.url().should('eq', `${Cypress.config().baseUrl}${urlEsperada}`)
         },
@@ -56,12 +61,14 @@ export default{
 
     // Top Header
         // Shopping
+        // Verifica se a mensagem do topheader esta correta
         checkMessage(message){
             cy.get(elements.div.topHeaderShop)
             .should('exist')
             .should('have.text', message)
         },
 
+        // Verifica o funcionamento do botão aproveitar no top header e o redirecionamento
         accessShoppingPage(){
             cy.get(elements.div.topHeaderShop)
             .should('exist')
@@ -72,6 +79,7 @@ export default{
         
 
         // Login
+        // Verifica o funcionamento do botão de login e redirecionamento correto
         accessLoginPage(){
             cy.get(elements.div.topHeaderUserArea)
             .should('exist')
@@ -83,6 +91,7 @@ export default{
         
 
         // Cadastro
+        // Verifica o funcionamento do botão de cadastro e redirecionamento correto
         accessRegisterPage() {
             cy.get(elements.div.topHeaderUserArea)
             .should('exist')
@@ -94,22 +103,52 @@ export default{
         
 
     // Header
-        
+
+        // Botao QAZANDO
+        // Visita a pagina Shop
+        visitShopPage(){
+            cy.visit('/shop')
+        },
+
+        // Clica na imagem de logo do qazando
+        clickQAzandoImage(){
+            cy.get('.header-logo')
+                .click()
+        },
+
+        // Checa o hover do dropdown home
+        checkDropdownHome(){
+            cy.get('#menuHome')
+                .realHover()
+                .get('.sub-menu')
+                .should('be.visible', { timeout: 3000 })
+        },
+
+        // Clica no botão electronics do dropdown home
+        clickDropdownHomeButton(){
+            cy.get('.sub-menu')
+                invokeCss('#item0')
+                .click()
+        },
+
+
 
 
         // Shop
+        // Verifica se o dropdown do header da aba Shop está funcionando corretamente
         checkDropdownShop(){
-            invokeCss('.has-dropdown.has-megaitem')
-            .realHover()
-            invokeCss('.mega-menu')
-            invokeCss('.menu-banner')
-            .should('be.visible')
+            invokeCss(elements.div.dropDownShop) // Torna as classes visiveis
+            .realHover() // Passa o mouse em cima
+            invokeCss(elements.div.dropDownMegaMenu)
+            invokeCss(elements.div.dropDownMenuBanner)
+            .should('be.visible') // Garante que esteja visivel
             
             
         },
 
+        // Clica em todos os botoes do dropdown (os botoes esão setados no Scenario Outline em header.feature)
         clickDropdownShopButton(button){
-            invokeCss('.mega-menu')
+            invokeCss(elements.div.dropDownMegaMenu)
                 .contains(button)
                 .invoke('css', 'visibility', 'visible')
                 .invoke('css', 'transform', 'none')
@@ -120,15 +159,17 @@ export default{
 
 
         // Pages
+        // Verifica se o dropdown do header da aba Pages está funcionando corretamente
         checkDropdownPages(){
-            invokeCss('#menuHome')
+            invokeCss(elements.div.dropDownMenuHome)
             .realHover()
-            invokeCss('.sub-menu')
+            invokeCss(elements.div.dropDownHomeSubHome)
             .should('be.visible', { timeout: 3000 })
         },
 
+        // Clica em todos os botoes do dropdown (os botoes esão setados no Scenario Outline em header.feature)
         clickDropdownPagesButton(button){
-            invokeCss('.sub-menu')
+            invokeCss(elements.div.dropDownHomeSubHome)
                 .contains(button)
                 .invoke('css', 'visibility', 'visible')
                 .invoke('css', 'transform', 'none')

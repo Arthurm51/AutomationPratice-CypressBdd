@@ -1,8 +1,8 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
 import home_page from "../pages/home_page.js"
-Given("eu estou na home", () => {
-    cy.visit('/')
-})
+
+
+
 
 
 // Acessar Shopping

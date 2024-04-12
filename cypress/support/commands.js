@@ -23,3 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+//Limpa os caches
+before(() => {
+    Cypress.automation('remote:debugger:protocol', {
+      command: 'Network.clearBrowserCache',
+    });
+  });

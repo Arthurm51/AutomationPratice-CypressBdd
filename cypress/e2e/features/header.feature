@@ -1,6 +1,4 @@
 Feature: Header
-
-
     Eu como cliente
     Quero visualizar botoes funcionais do Header
     Para acessar páginas, buscar produtos, favoritos e sacola
@@ -8,10 +6,16 @@ Feature: Header
     Background: Acessar a home
         Given eu estou na home
 
-    # Scenario: Botão QAZANDO
-    #     When eu clico no botão de login
-    #     And eu clico no botao da logo qazando
-    #     Then sou redirecionado para a home
+    Scenario: Botão QAZANDO
+        When eu estou na pagina Shop
+        And eu clico no botao da logo qazando
+        Then sou redirecionado para a home
+
+    Scenario: Acessar Pagina Electronics do Home
+        When eu deixo o mouse em cima do botao Home
+        And eu clico no botao Eletronics
+        Then sou redirecionado para a URL electronics
+    
 
     Scenario Outline: Acessar Paginas do Shop
         When eu deixo o mouse em cima do botao Shop
