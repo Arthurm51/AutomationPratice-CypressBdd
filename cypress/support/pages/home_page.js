@@ -8,15 +8,22 @@ const elements = {
     buttons: {
         shopping: 'p > a',
         login: '.fa-user',
-        register: '.fa-lock'
+        register: '.fa-lock',
+        qazandoLogo: '.header-logo',
+        wishlistHeart: '.header-action-link .offcanvas-toggle .fa-heart',
+        wishlistClose: '#offcanvas-wishlish .offcanvas-close',
+        cartlist: '.header-action-link .offcanvas-toggle .fa-shopping-bag',
+        cartlistClose: '#offcanvas-add-cart .offcanvas-close',
+        openSearch: '.search_width',
+        doSearch: '.btn-main-search',
+        closeSearchModal: '#search .close',
+        confirmModal:'.swal2-confirm'
     },
     fields: {
-        name: '#user'
+        name: '#user',
+        searchInput: 'form > input',
         
 
-    },
-    messages: {
-        
     },
     div: {
         topHeaderShop: '.top_header_left',
@@ -26,11 +33,20 @@ const elements = {
         dropDownMenuBanner: '.menu-banner',
         dropDownMenuHome: '#menuHome',
         dropDownHomeSubHome: '.sub-menu',
+        wishlistCounter: ':nth-child(1) > .offcanvas-toggle > .item-count',
+        wishlistModal: '#offcanvas-wishlish',
+        cartlistCounter: '.col-12 > .header-action-link > :nth-child(2) > .offcanvas-toggle > .item-count',
+        cartlistModal: '#offcanvas-add-cart',
+        searchModal: '#search',
+        successIcon: '.swal2-icon-success',
+        sucessTitle: '#swal2-title',
+        shopArea: '#shop_main_area'
 
     }
 }
 
 
+// Functions
 // Função que torna os elementos escondidos do dropdown visiveis, invoca o css e altera as caracteristicas
 function invokeCss(selector) {
     return cy.get(selector).invoke('css', {
@@ -40,9 +56,6 @@ function invokeCss(selector) {
     })
     .should('be.visible', { timeout: 3000 }) // Garante que o elemento fique visivel, e aguarda até 3 segundos até que se torne visivel
 }
-
-
-
 
 
 // Usages
@@ -56,8 +69,6 @@ export default{
         },
 
         
-
-
 
     // Top Header
         // Shopping
@@ -103,7 +114,6 @@ export default{
         
 
     // Header
-
         // Botao QAZANDO
         // Visita a pagina Shop
         visitShopPage(){
@@ -112,26 +122,26 @@ export default{
 
         // Clica na imagem de logo do qazando
         clickQAzandoImage(){
-            cy.get('.header-logo')
+            cy.get(elements.buttons.qazandoLogo)
                 .click()
         },
 
+
+        // Home
         // Checa o hover do dropdown home
         checkDropdownHome(){
-            cy.get('#menuHome')
+            cy.get(elements.div.dropDownMenuHome)
                 .realHover()
-                .get('.sub-menu')
+                .get(elements.div.dropDownHomeSubHome)
                 .should('be.visible', { timeout: 3000 })
         },
 
         // Clica no botão electronics do dropdown home
         clickDropdownHomeButton(){
-            cy.get('.sub-menu')
-                invokeCss('#item0')
-                .click()
+            invokeCss(elements.div.dropDownHomeSubHome)
+            invokeCss('#item0')
+            .click()
         },
-
-
 
 
         // Shop
@@ -142,8 +152,6 @@ export default{
             invokeCss(elements.div.dropDownMegaMenu)
             invokeCss(elements.div.dropDownMenuBanner)
             .should('be.visible') // Garante que esteja visivel
-            
-            
         },
 
         // Clica em todos os botoes do dropdown (os botoes esão setados no Scenario Outline em header.feature)
@@ -169,6 +177,7 @@ export default{
 
         // Clica em todos os botoes do dropdown (os botoes esão setados no Scenario Outline em header.feature)
         clickDropdownPagesButton(button){
+            invokeCss(elements.div.dropDownMenuHome)
             invokeCss(elements.div.dropDownHomeSubHome)
                 .contains(button)
                 .invoke('css', 'visibility', 'visible')
@@ -180,5 +189,104 @@ export default{
 
         
 
-        
+    // Header/Wishlist
+        openWishlistHeader(){
+            cy.get(elements.div.wishlistCounter)
+            .should('be.visible')
+            cy.get(elements.buttons.wishlistHeart)
+            .first()
+            .click()
+        },
+
+        closeWishlistHeader(){
+            cy.get(elements.buttons.wishlistClose)
+            .click()
+            .wait(2000)
+        },
+
+        checkWishlistModalVisible(){
+            cy.get(elements.div.wishlistModal)
+            .should('be.visible', { timeout: 3000 })
+        },
+
+        checkWishlistModalNotVisible(){
+            cy.get(elements.div.wishlistModal)
+            .should('not.be.visible', { timeout: 3000 })
+        },
+
+    
+    // Header/Cart
+        openCartlistHeader(){
+            cy.get(elements.div.cartlistCounter)
+            .should('be.visible')
+            cy.get(elements.buttons.cartlist)
+            .first()
+            .click()
+        },
+
+        closeCartlistHeader(){
+            cy.get(elements.buttons.cartlistClose)
+            .click()
+            .wait(2000)
+        },
+
+        checkCartlistModalVisible(){
+            cy.get(elements.div.cartlistModal)
+            .should('be.visible', { timeout: 3000 })
+        },
+
+        checkCartlistModalNotVisible(){
+            cy.get(elements.div.cartlistModal)
+            .should('not.be.visible', { timeout: 3000 })
+        },
+
+    // Header/Search
+        clickSearchButton(){
+            cy.get(elements.buttons.openSearch)
+            .first()
+            .click()
+        },
+
+        typeSearch(string){
+            cy.get(elements.div.searchModal)
+            .should('be.visible', {timeout:3000})
+            .get(elements.fields.searchInput)
+            .type(string)
+        },
+
+        doSearch(){
+            cy.get(elements.buttons.doSearch)
+            .click()
+        },
+
+        closeSearchModal(){
+            cy.get(elements.buttons.closeSearchModal)
+            .click()
+            .wait(1000)
+        },
+
+        checkAndCloseSuccessSearchModal(){
+            cy.get(elements.div.successIcon)
+            .should('be.visible', {timeout:3000})
+            .get(elements.div.sucessTitle)
+            .contains('Success')
+            .get(elements.buttons.confirmModal)
+            .click()
+        },
+
+        searchPageContainProduct(){
+            cy.get(elements.div.shopArea)
+            .contains('Green Dress For Woman')
+        },
+
+        checkCloseSearchModal(){
+            cy.get(elements.div.searchModal)
+            .should('not.be.visible')
+        },
+
+    
+
+
+
+      
 }

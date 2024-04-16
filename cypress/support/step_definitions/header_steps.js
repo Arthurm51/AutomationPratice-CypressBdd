@@ -38,16 +38,74 @@ When("eu clico no botao na aba Pages {string}", (button) => {
     home_page.clickDropdownPagesButton(button)
 })
 
-Then("sou redirecionado para a home", () => {
-    home_page.checkUrl('/')
+When("eu clico no botao de favoritos", () => {
+    home_page.openWishlistHeader()
 })
 
-Then("sou redirecionado para a URL electronics", () => {
-    home_page.checkUrl('/electronics')
+When("eu clico no botao de fechar favoritos", () => {
+    home_page.closeWishlistHeader()
 })
+
+When("eu clico no botao da sacola", () => {
+    home_page.openCartlistHeader()
+})
+
+When("eu clico no botao de fechar sacola", () => {
+    home_page.closeCartlistHeader()
+})
+
+When("eu clico no botao de pesquisa", () => {
+    home_page.clickSearchButton()
+})
+
+When("eu digito {string}", (string) => {
+    home_page.typeSearch(string)
+})
+
+When("eu clico em pesquisar", () => {
+    home_page.doSearch()
+})
+
+When("eu clico no botao de fechar modal de busca", () => {
+    home_page.closeSearchModal()
+})
+
+
+
+
 
 
 Then('eu sou redirecionado para a URL {string}', (urlEsperada) => {
     home_page.checkUrl(urlEsperada)
   })
+
+Then('eu visualizo os favoritos', () => {
+    home_page.checkWishlistModalVisible()
+})
+
+Then('o modal de favoritos é fechado', () => {
+    home_page.checkWishlistModalNotVisible()
+})
+
+Then('eu visualizo a sacola', () => {
+    home_page.checkCartlistModalVisible()
+})
+
+Then('o modal de sacola é fechado', () => {
+    home_page.checkCartlistModalNotVisible()
+})
+
+Then('o modal de pesquisa com sucesso é apresentado', () => {
+    home_page.checkAndCloseSuccessSearchModal()
+})
+
+Then('os produtos são apresentados na tela', () => {
+    home_page.searchPageContainProduct()
+})
+
+Then('o modal de busca é fechado', () => {
+    home_page.checkCloseSearchModal()
+})
+
+
   
