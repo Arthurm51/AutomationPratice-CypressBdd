@@ -17,7 +17,8 @@ const elements = {
         openSearch: '.search_width',
         doSearch: '.btn-main-search',
         closeSearchModal: '#search .close',
-        confirmModal:'.swal2-confirm'
+        confirmModal:'.swal2-confirm',
+        navBarTopProduct: '.nav-tabs'
     },
     fields: {
         name: '#user',
@@ -284,6 +285,19 @@ export default{
             .should('not.be.visible')
         },
 
+    //Top Products
+        navigationBarTopProducts(button){
+            cy.get(elements.buttons.navBarTopProduct)
+            .contains(button)
+            .click()
+            .should('have.css', 'background-color', 'rgb(0, 200, 207)', {timeout: 3000})
+        },
+
+        checkNavigationTopProducts(id, product){
+            cy.get(id)
+            .should('be.visible', {timeout:3000})
+            .contains(product)
+        }
     
 
 
