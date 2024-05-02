@@ -7,16 +7,16 @@ Feature: HomeTopProducts
         Given eu estou na home
         When eu estou no modal de top product
 
-    # Scenario Outline: Selecionar abas do top products
-    # And eu clico na aba "<aba>" e o botão é ativo
-    # Then eu vejo a "<selecao>" e o "<produto>" corretos apresentados
+    Scenario Outline: Selecionar abas do top products
+    And eu clico na aba "<aba>" e o botão é ativo
+    Then eu vejo a "<selecao>" e o "<produto>" corretos apresentados
 
-    # Examples:
-    #     | aba | selecao | produto |
-    #     | Vaideo & Audio | #video | Movie Projector HD Outdoor |
-    #     | Audio & Home | #audio | Powerbeats Pro Wireless Earbuds |
-    #     | Camera & Photo | #camera | Fossil Men's Quartz Watch |
-    #     | Home & Garden | #home | New Apple AirPods Max |
+    Examples:
+        | aba | selecao | produto |
+        | Vaideo & Audio | #video | Movie Projector HD Outdoor |
+        | Audio & Home | #audio | Powerbeats Pro Wireless Earbuds |
+        | Camera & Photo | #camera | Fossil Men's Quartz Watch |
+        | Home & Garden | #home | New Apple AirPods Max |
 
 
     Scenario: Adicionar produto top na sacola

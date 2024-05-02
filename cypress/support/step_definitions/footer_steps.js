@@ -1,57 +1,50 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
 import 'cypress-real-events/support';
 import home_page from "../pages/home_page";
-import { faker } from '@faker-js/faker';
+
 
 
 When("eu estou no footer", () => {
-    cy.get('#footer_one')
-    .should('be.visible')
+    home_page.goToFooter()
 })
 
 When("eu clico no botao na coluna Information {string}", (button) => {
-    cy.get('.col-lg-3.col-md-6 .footer_one_widget')
-    .contains(button)
-    .click()
+    home_page.footerInformationColumn(button)
 })
 
 When("eu clico no botao na coluna Shop {string}", (button) => {
-    cy.get('.col-lg-2 .footer_one_widget')
-    .contains(button)
-    .click()
+    home_page.footerShopColumn(button)
 })
 
 When("eu estou na newsletter do footer", () => {
-    cy.get('.col-md-12 .footer_one_widget')
-    .should('be.visible')
-    .as('footerNewsletter')
+    home_page.footerNewsletter()
 })
 
 When("clico em enviar email", () => {
-    cy.get('@footerNewsletter')
-    .find('.btn_md')
-    .click()
+    home_page.sendEmailNewsletter()
 })
 
 When("preencho a newsletter com um email invalido", () => {
-    cy.get('@footerNewsletter')
-    .find('.form-control')
-    .type('testeinvalido')
+    home_page.footerTypeInvalidEmailNewsletter()
 })
 
 When("preencho a newsletter com um email valido", () => {
-    cy.get('@footerNewsletter')
-    .find('.form-control')
-    .type(faker.internet.email())
+    home_page.footerTypeValidEmailNewsletter()
+})
+
+When("clicar no botao para voltar ao topo da pagina", () => {
+    home_page.goToTopPage()
 })
 
 Then("o modal de email confirmado não é visualizado", () => {
-    cy.get('.swal2-icon-success')
-    .should('not.exist')
+    home_page.confirmationEmailModalDontVisible()
 })
 
 Then("o modal de email confirmado é visualizado", () => {
-    cy.get('.swal2-icon-success')
-    .should('be.visible')
+    home_page.confirmationEmailModal()
+})
+
+Then("o usuario volta ao topo da página", () => {
+    home_page.checkInTopPage()
 })
 

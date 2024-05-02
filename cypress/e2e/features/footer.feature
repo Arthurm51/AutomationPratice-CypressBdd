@@ -50,4 +50,8 @@ Feature: Footer
         And preencho a newsletter com um email valido
         And clico em enviar email
         Then o modal de email confirmado é visualizado
+
+    Scenario: Voltar ao topo da página
+        And clicar no botao para voltar ao topo da pagina
+        Then o usuario volta ao topo da página
     

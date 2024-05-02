@@ -1,6 +1,7 @@
 /// <reference types="cypress"/>
 
 import 'cypress-real-events/support';
+import { faker } from '@faker-js/faker';
 
 // Elements
 // Variaveis para facilitar a manutenção do codigo
@@ -18,11 +19,21 @@ const elements = {
         doSearch: '.btn-main-search',
         closeSearchModal: '#search .close',
         confirmModal:'.swal2-confirm',
-        navBarTopProduct: '.nav-tabs'
+        navBarTopProduct: '.nav-tabs',
+        modalActionsProduct: '.product_button',
+        bag: '.fa-shopping-bag',
+        heart: '.fa-heart',
+        eye: '.quickview',
+        modalProductAddCart: '.product_count_one .btn_sm',
+        closeModalDetailsIcon: '.close_modal_icon',
+        sendNewsletter: '.btn_md',
+        top: '.go-top'
+
     },
     fields: {
         name: '#user',
         searchInput: 'form > input',
+        newsletterLabel: '.form-control',
         
 
     },
@@ -41,7 +52,17 @@ const elements = {
         searchModal: '#search',
         successIcon: '.swal2-icon-success',
         sucessTitle: '#swal2-title',
-        shopArea: '#shop_main_area'
+        shopArea: '#shop_main_area',
+        topProductModal: '#electronics_top_product',
+        topProductProduct: '#video .product_item_two',
+        productAddModal: '.swal2-container',
+        productDetailsModal: '.modal-body',
+        footer: '#footer_one',
+        footerInformation: '.col-lg-3.col-md-6 .footer_one_widget',
+        footerShop: '.col-lg-2 .footer_one_widget',
+        footerNewsletterColumn: '.col-md-12 .footer_one_widget',
+        weeklyProductsModal: '#elce_weekly_deal',
+        weeklyProducts: '#elce_weekly_deal .slick-list .slick-slide',
 
     }
 }
@@ -57,6 +78,15 @@ function invokeCss(selector) {
     })
     .should('be.visible', { timeout: 3000 }) // Garante que o elemento fique visivel, e aguarda até 3 segundos até que se torne visivel
 }
+
+const visibleCss = {
+    visibility: 'visible',
+    opacity: '1',
+    transform: 'none'
+};
+
+const footerNewsletter = 'footerNewsletter'
+
 
 
 // Usages
@@ -286,6 +316,10 @@ export default{
         },
 
     //Top Products
+        modalTopProducts(){
+            cy.get(elements.div.topProductModal)
+        },
+
         navigationBarTopProducts(button){
             cy.get(elements.buttons.navBarTopProduct)
             .contains(button)
@@ -297,10 +331,147 @@ export default{
             cy.get(id)
             .should('be.visible', {timeout:3000})
             .contains(product)
-        }
-    
+        },
+
+        addTopProductToCart(){
+            cy.get(elements.div.topProductProduct)
+            .first()
+            .realHover()
+            .find(elements.buttons.modalActionsProduct)
+            .invoke('css', visibleCss)
+            .should('be.visible', {timeout:3000})
+            .find(elements.buttons.bag)
+            .click()
+        },
+
+        addTopProductToWishlist(){
+            cy.get(elements.div.topProductProduct)
+            .first()
+            .realHover()
+            .find(elements.buttons.modalActionsProduct)
+            .invoke('css', visibleCss)
+            .should('be.visible', {timeout:3000})
+            .find(elements.buttons.heart)
+            .click()
+        },
+        viewTopProductsDetails(){
+            cy.get(elements.div.topProductProduct)
+            .first()
+            .realHover()
+            .find(elements.buttons.modalActionsProduct)
+            .invoke('css', visibleCss)
+            .should('be.visible', {timeout:3000})
+            .find(elements.buttons.eye)
+            .click()
+        },
+        addTopProductToCartDetails(){
+            cy.get(elements.buttons.modalProductAddCart)
+            .click()
+        },
+        closeTopProductDetails(){
+            cy.get(elements.buttons.closeModalDetailsIcon)
+            .click() 
+        },
+        checkAddCartTopProductModal(){
+            cy.get(elements.div.productAddModal)
+            .should('be.visible')
+            .contains('Successfully added to your Cart')
+            .get(elements.div.sucessTitle)
+            .should('be.visible')
+            cy.get(elements.div.productAddModal)
+            .should('not.exist', {timeout: 3000})
+        },
+        checkAddWishlistTopProductModal(){
+            cy.get(elements.div.productAddModal)
+            .should('be.visible')
+            .contains('Added to Wishlist')
+            .get(elements.div.sucessTitle)
+            .should('be.visible')
+            .get(elements.buttons.confirmModal)
+            .click()
+            cy.get(elements.div.productAddModal)
+            .should('not.exist', {timeout: 3000})
+        },
+        checkTopProductDetails(){
+            cy.get(elements.div.productDetailsModal)
+            .should('be.visible')
+            .contains('Movie Projector HD Outdoor')
+            cy.get(elements.div.productDetailsModal)
+            .contains('Add To Cart')
+        },
+        checkTopProductDetailsClosed(){
+            cy.get(elements.div.productDetailsModal)
+            .should('not.exist', {timeout: 3000})
+        },
+      
+
+
+    // Weekly Products
+       checkModalWeeklyProducts(){
+            cy.get(elements.div.weeklyProductsModal)
+            .should('be.visible')
+       }, 
+       checkWeeklyProducts(){
+            cy.get(elements.div.weeklyProducts)
+            .should('be.visible')
+       }, 
 
 
 
+
+    // Footer
+        goToFooter(){
+            cy.get(elements.div.footer)
+            .should('be.visible') 
+        },
+        footerInformationColumn(button){
+            cy.get(elements.div.footerInformation)
+            .contains(button)
+            .click()
+        },
+        footerShopColumn(button){
+            cy.get(elements.div.footerShop)
+            .contains(button)
+            .click()
+        },
+        footerNewsletter(){
+            cy.get(elements.div.footerNewsletterColumn)
+            .should('be.visible')
+            .as(footerNewsletter)
+        },
+        sendEmailNewsletter(){
+            cy.get(`@${footerNewsletter}`)
+            .find(elements.buttons.sendNewsletter)
+            .click()
+        },
+        footerTypeInvalidEmailNewsletter(){
+            cy.get(`@${footerNewsletter}`)
+            .find(elements.fields.newsletterLabel)
+            .type('testeinvalido')
+        },
+        footerTypeValidEmailNewsletter(){
+            cy.get(`@${footerNewsletter}`)
+            .find(elements.fields.newsletterLabel)
+            .type(faker.internet.email()) 
+        },
+        goToTopPage(){
+            cy.scrollTo('bottom')
+            .get(elements.buttons.top)
+            .click()
+            .wait(1000)
+        },
+        confirmationEmailModalDontVisible(){
+            cy.get(elements.div.successIcon)
+            .should('not.exist')
+        },
+        confirmationEmailModal(){
+            cy.get(elements.div.successIcon)
+            .should('be.visible')
+        },
+        checkInTopPage(){
+            cy.window().then(win => {
+                expect(win.document.documentElement.scrollTop).to.lessThan(50);
+            });
+        },
       
 }

@@ -5,14 +5,10 @@ import home_page from "../pages/home_page";
 
 
 
-const visibleCss = {
-    visibility: 'visible',
-    opacity: '1',
-    transform: 'none'
-};
+
 
 When("eu estou no modal de top product", () => {
-    cy.get("#electronics_top_product")
+    home_page.modalTopProducts()
 })
 
 When("eu clico na aba {string} e o botão é ativo", (button) => {
@@ -20,27 +16,20 @@ When("eu clico na aba {string} e o botão é ativo", (button) => {
 })
 
 When("adiciono o produto na sacola", () => {
-    cy.get('#video .product_item_two')
-    .first()
-    .realHover()
-    .find('.product_button')
-    .invoke('css', visibleCss)
-    .should('be.visible', {timeout:3000})
-    .find('.fa-shopping-bag')
-    .click()
+    home_page.addTopProductToCart()
 
 })
 When("adiciono o produto aos favoritos", () => {
-
+    home_page.addTopProductToWishlist()
 })
 When("visualizo o produto top maximizado", () => {
-
+    home_page.viewTopProductsDetails()
 })
 When("adiciono o produto na sacola com o modal aberto", () => {
-
+    home_page.addTopProductToCartDetails()
 })
 When("fecho o modal de produtos top", () => {
-
+    home_page.closeTopProductDetails()
 })
 
 Then("eu vejo a {string} e o {string} corretos apresentados", (id, product) => {
@@ -48,15 +37,15 @@ Then("eu vejo a {string} e o {string} corretos apresentados", (id, product) => {
 })
 
 Then("o modal de produto adicionado na sacola é exibido e fechado", () => {
-
+    home_page.checkAddCartTopProductModal()
 })
 Then("o modal de produto adicionado aos favoritos é exibido e fechado", () => {
-
+    home_page.checkAddWishlistTopProductModal()
 })
 Then("o modal do produto maximizado é exibido", () => {
-
+    home_page.checkTopProductDetails()
 })
 Then("o modal de produtos top é fechado", () => {
-
+    home_page.checkTopProductDetailsClosed()
 })
 
