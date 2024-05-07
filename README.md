@@ -8,6 +8,6 @@ O projeto ainda está em desenvolvimento, atualmente a home page está 90% concl
 
 ### Contato
 
-Para mais informações, entre em contato <a href="[https://www.linkedin.com/in/arthurvieiramachado51/](https://www.linkedin.com/in/arthurvieiramachado51/)">Linkedin</a>
+Para mais informações, entre em contato <a href="https://www.linkedin.com/in/arthurvieiramachado51/">Linkedin</a>
 
 
