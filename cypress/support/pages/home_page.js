@@ -388,7 +388,7 @@ export default{
         },
         sendEmailNewsletter(){
             cy.get(`@${footerNewsletter}`)
-            .find(elements.buttons.sendNewsletter)
+            .find(elements.buttons.default)
             .click()
         },
         footerTypeInvalidEmailNewsletter(){
@@ -421,4 +421,68 @@ export default{
             });
         },
       
+
+    //Wishlist
+        deleteFavoriteProduct(){
+            cy.get(elements.div.wishlistModal)
+            .find(elements.buttons.trash)
+            .then($elements => {
+                const elementsReversed = [...$elements].reverse();
+                elementsReversed.forEach($el => {
+                  cy.wrap($el).click();
+                });
+              });
+        },
+        clickFavoriteProduct(){
+            cy.get(elements.div.wishlistModal)
+            .contains('Boho Tops for Girls')
+            .click()
+        },
+        clickWishListButton(){
+            cy.get(elements.div.wishlistModal)
+            .find(elements.buttons.default)
+            .click()
+        },
+        checkWishlistEmpty(){
+            cy.get(elements.div.wishlistModal)
+            .get(elements.div.modalRightSideProduct)
+            .should('not.be.visible', {timeout: 3000})
+        },
+        
+
+    //Cartlist
+        deleteCartlistProduct(){
+            cy.get(elements.div.cartlistModal)
+            .find(elements.buttons.trash)
+            .then($elements => {
+                const elementsReversed = [...$elements].reverse();
+                elementsReversed.forEach($el => {
+                cy.wrap($el).click();
+                });
+            });
+        },
+        
+        clickCartlistProduct(){
+            cy.get(elements.div.cartlistModal)
+            .contains('Fit-Flare Dress')
+            .click()
+        },
+
+        clickCartlistButton(){
+            cy.get(elements.div.cartlistModal)
+            .contains('View Cart')
+            .click()
+        },
+
+        clickCheckoutCartlistButton(){
+            cy.get(elements.div.cartlistModal)
+            .contains('Checkout')
+            .click()
+        },
+
+        checkCartlistEmpty(){
+            cy.get(elements.div.cartlistModal)
+            .get(elements.div.modalRightSideProduct)
+            .should('not.be.visible', {timeout: 3000})
+        },
 }

@@ -4,7 +4,9 @@
 
 
 O projeto ainda está em desenvolvimento:
+
 Home Page 100%;
+
 Cadastro em andamento;
 
 

@@ -20,8 +20,10 @@ export default{
             eye: '.quickview',
             modalProductAddCart: '.product_count_one .btn_sm',
             closeModalDetailsIcon: '.close_modal_icon',
-            sendNewsletter: '.btn_md',
-            top: '.go-top'
+            default: '.btn_md',
+            top: '.go-top',
+            trash: '.fa-trash',
+
     
         },
         fields: {
@@ -57,6 +59,7 @@ export default{
             footerNewsletterColumn: '.col-md-12 .footer_one_widget',
             weeklyProductsModal: '#elce_weekly_deal',
             weeklyProducts: '#elce_weekly_deal .slick-list .slick-slide',
+            modalRightSideProduct: '.offcanvas-wishlist-item-single',
     
         }
     }
