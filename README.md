@@ -3,7 +3,9 @@
 **Este projeto Cypress está sendo automatizado praticamente todas as funções do site <a href="https://automationpratice.com.br/">AutomationPratice</a> disponibilizado pelo curso da QAZando.**
 
 
-O projeto ainda está em desenvolvimento, atualmente a home page está 90% concluída.
+O projeto ainda está em desenvolvimento:
+Home Page 100%;
+Cadastro em andamento;
 
 
 ### Contato
