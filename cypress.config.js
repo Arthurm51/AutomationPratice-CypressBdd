@@ -7,17 +7,10 @@ const { createEsbuildPlugin } = require("@badeball/cypress-cucumber-preprocessor
 
 
 module.exports = defineConfig({
-
- 
-  
   
   viewportHeight: 960,
   viewportWidth: 1536,
 
-
-  
-  
-  
   e2e: {
     baseUrl: 'https://automationpratice.com.br',
     defaultCommandTimeout: 5000,

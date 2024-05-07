@@ -1,9 +1,5 @@
-import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
+import { When, Then } from "@badeball/cypress-cucumber-preprocessor"
 import home_page from "../pages/home_page.js"
-
-
-
-
 
 // Acessar Shopping
 When("eu vejo a mensagem {string}", (message) => {
@@ -19,7 +15,6 @@ Then("sou redirecionado para a página shopping", () => {
 })
 
 
-
 // Acessar Login
 When("eu clico no botão de login", () => {
     home_page.accessLoginPage()
@@ -30,7 +25,6 @@ Then("sou redirecionado para a página de login", () => {
 })
 
 
-
 // Acessar Cadastro
 When("eu clico no botao de cadastro", () => {
     home_page.accessRegisterPage()
@@ -39,4 +33,3 @@ When("eu clico no botao de cadastro", () => {
 Then("sou redirecionado para a página de cadastro", () => {
     home_page.checkUrl('/register')
 })
-

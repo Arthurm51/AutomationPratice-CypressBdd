@@ -2,8 +2,10 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
 import 'cypress-real-events/support';
 import home_page from "../pages/home_page";
 
+
+
 Given("eu estou na home", () => {
-    cy.visit('/')
+    home_page.inHomePage()
 })
 
 When("eu estou na pagina Shop", () => {

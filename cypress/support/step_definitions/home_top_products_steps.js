@@ -1,10 +1,6 @@
-import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
+import { When, Then } from "@badeball/cypress-cucumber-preprocessor"
 import 'cypress-real-events/support';
 import home_page from "../pages/home_page";
-
-
-
-
 
 
 When("eu estou no modal de top product", () => {
@@ -17,7 +13,6 @@ When("eu clico na aba {string} e o botão é ativo", (button) => {
 
 When("adiciono o produto na sacola", () => {
     home_page.addTopProductToCart()
-
 })
 When("adiciono o produto aos favoritos", () => {
     home_page.addTopProductToWishlist()

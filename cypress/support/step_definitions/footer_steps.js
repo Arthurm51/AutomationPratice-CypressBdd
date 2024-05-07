@@ -1,4 +1,4 @@
-import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
+import { When, Then } from "@badeball/cypress-cucumber-preprocessor"
 import 'cypress-real-events/support';
 import home_page from "../pages/home_page";
 
