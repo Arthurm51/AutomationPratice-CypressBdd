@@ -23,6 +23,9 @@ export default{
             default: '.btn_md',
             top: '.go-top',
             trash: '.fa-trash',
+            doLogin: '#btnLogin',
+            notRegisteredButton: '#createAccount',
+            doRegister: '#btnRegister',
 
     
         },
@@ -30,6 +33,8 @@ export default{
             name: '#user',
             searchInput: 'form > input',
             newsletterLabel: '.form-control',
+            password: '#password',
+            email: '#email'
             
     
         },
@@ -48,6 +53,7 @@ export default{
             searchModal: '#search',
             successIcon: '.swal2-icon-success',
             sucessTitle: '#swal2-title',
+            successModal: '#swal2-html-container',
             shopArea: '#shop_main_area',
             topProductModal: '#electronics_top_product',
             topProductProduct: '#video .product_item_two',
@@ -60,6 +66,8 @@ export default{
             weeklyProductsModal: '#elce_weekly_deal',
             weeklyProducts: '#elce_weekly_deal .slick-list .slick-slide',
             modalRightSideProduct: '.offcanvas-wishlist-item-single',
+            errorMessage: '.invalid_input',
+            errorMessageRegisterPage: '.errorLabel',
     
         }
     }

@@ -35,7 +35,7 @@ export default{
         // URL
         // Verifica se a url esta correta, (URL base + a url esperada após o /)
         checkUrl(urlEsperada){
-            cy.url().should('eq', `${Cypress.config().baseUrl}${urlEsperada}`)
+            cy.url().should('eq', `${Cypress.config().baseUrl}${urlEsperada}`, {timeout: 3000})
         },
 
         inHomePage(){

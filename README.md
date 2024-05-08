@@ -7,7 +7,11 @@ O projeto ainda está em desenvolvimento:
 
 Home Page 100%;
 
-Cadastro em andamento;
+Login Page 100%;
+
+Register Page 100%;
+
+
 
 
 ### Contato
