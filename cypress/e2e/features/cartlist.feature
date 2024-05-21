@@ -3,7 +3,7 @@ Feature: Cartlist
     Quero acessar a aba do carrinho
     Para adicionar, remover e acessar produtos do carrinho
 
-    Background: Abrir modal do carrtinho
+    Background: Abrir modal do carrinho
         Given eu estou na home
         And eu clico no botao da sacola
         And eu visualizo a sacola

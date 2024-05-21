@@ -11,7 +11,9 @@ Login Page 100%;
 
 Register Page 100%;
 
+Cart Page 100%;
 
+Checkout em andamento
 
 
 ### Contato

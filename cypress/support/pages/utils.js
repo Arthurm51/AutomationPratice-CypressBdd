@@ -26,6 +26,7 @@ export default{
             doLogin: '#btnLogin',
             notRegisteredButton: '#createAccount',
             doRegister: '#btnRegister',
+            cartGeneral: '.btn_sm',
 
     
         },
@@ -34,7 +35,8 @@ export default{
             searchInput: 'form > input',
             newsletterLabel: '.form-control',
             password: '#password',
-            email: '#email'
+            email: '#email',
+            coupon: '.mb-2'
             
     
         },
@@ -54,6 +56,8 @@ export default{
             successIcon: '.swal2-icon-success',
             sucessTitle: '#swal2-title',
             successModal: '#swal2-html-container',
+            errorModal: '.swal2-modal',
+            imageError: '.swal2-error',
             shopArea: '#shop_main_area',
             topProductModal: '#electronics_top_product',
             topProductProduct: '#video .product_item_two',
@@ -68,7 +72,15 @@ export default{
             modalRightSideProduct: '.offcanvas-wishlist-item-single',
             errorMessage: '.invalid_input',
             errorMessageRegisterPage: '.errorLabel',
-    
+            productName: '.product_name',
+            productRemove: '.product_remove',
+            productQuantity: '.product_quantity > input',
+            productTotal: '.product_total',
+            clearCartModal: '.cart_submit',
+            cartModal: '.table_desc',
+            emptyCartModal: '.empaty_cart_area',
+            couponLeftModal: '.coupon_code.left',
+            couponRightModal: '.coupon_code.right',
         }
     }
 }
