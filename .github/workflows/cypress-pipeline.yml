@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest # maquina que será executada
     steps: # passo a passo para rodar os testes
       - name: Checkout/Clone do projeto # clone do projeto
-        uses: actions/checkout#v3
+        uses: actions/checkout@v3
 
       - name: Run tests #execução e configuração do projeto
         uses: cypress-io/github-action@v5
