@@ -27,6 +27,8 @@ export default{
             notRegisteredButton: '#createAccount',
             doRegister: '#btnRegister',
             cartGeneral: '.btn_sm',
+            checkout: '.order_review .theme-btn-one',
+            closeModalCheckout: '.modal-content .close'
 
     
         },
@@ -36,7 +38,16 @@ export default{
             newsletterLabel: '.form-control',
             password: '#password',
             email: '#email',
-            coupon: '.mb-2'
+            coupon: '.mb-2',
+            firstName: '#fname',
+            lastName: '#lname',
+            companyName: '#cname',
+            country: '#country',
+            city: '#city',
+            zipCode: '#zip',
+            fullAddress: '#faddress',
+            message: '#messages',
+
             
     
         },
@@ -81,6 +92,11 @@ export default{
             emptyCartModal: '.empaty_cart_area',
             couponLeftModal: '.coupon_code.left',
             couponRightModal: '.coupon_code.right',
+            saveAddressCheck: '#materialUnchecked',
+            paypalPayment: '#css',
+            addressSavedMessage: '.checkout-area-bg .check-out-form > h3',
+            successPurchaseModal: '.modal-content .col-lg-12',
+            
         }
     }
 }
