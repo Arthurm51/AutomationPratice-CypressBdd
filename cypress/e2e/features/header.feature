@@ -24,7 +24,7 @@ Feature: Header
 
         Examples:
             | nome_do_botao | url_esperada |
-            | Shop Four Grid  | /shop  |
+            | Shop Four Grid  | /shoppppppppppppp  |
             | Shop Three Grid | /shopTwo |
             | Shop List View | /shoplist |
             | Shop Left Sidebar | /shop-left-bar |
