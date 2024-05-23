@@ -20,3 +20,6 @@ jobs:
           record: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY  }}
+
+      - name: Instalar dependencias do projeto
+        run: npm install # executa no terminal
