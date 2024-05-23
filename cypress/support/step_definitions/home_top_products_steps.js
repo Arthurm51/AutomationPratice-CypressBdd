@@ -1,7 +1,5 @@
 import { When, Then } from "@badeball/cypress-cucumber-preprocessor"
-import 'cypress-real-events/support';
 import home_page from "../pages/home_page";
-
 
 When("eu estou no modal de top product", () => {
     home_page.modalTopProducts()
@@ -34,13 +32,15 @@ Then("eu vejo a {string} e o {string} corretos apresentados", (id, product) => {
 Then("o modal de produto adicionado na sacola é exibido e fechado", () => {
     home_page.checkAddCartTopProductModal()
 })
+
 Then("o modal de produto adicionado aos favoritos é exibido e fechado", () => {
     home_page.checkAddWishlistTopProductModal()
 })
+
 Then("o modal do produto maximizado é exibido", () => {
     home_page.checkTopProductDetails()
 })
+
 Then("o modal de produtos top é fechado", () => {
     home_page.checkTopProductDetailsClosed()
 })
-

@@ -1,8 +1,5 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
-import 'cypress-real-events/support';
 import home_page from "../pages/home_page";
-
-
 
 Given("eu estou na home", () => {
     home_page.inHomePage()
@@ -72,11 +69,6 @@ When("eu clico no botao de fechar modal de busca", () => {
     home_page.closeSearchModal()
 })
 
-
-
-
-
-
 Then('eu sou redirecionado para a URL {string}', (urlEsperada) => {
     home_page.checkUrl(urlEsperada)
   })
@@ -108,6 +100,3 @@ Then('os produtos são apresentados na tela', () => {
 Then('o modal de busca é fechado', () => {
     home_page.checkCloseSearchModal()
 })
-
-
-  

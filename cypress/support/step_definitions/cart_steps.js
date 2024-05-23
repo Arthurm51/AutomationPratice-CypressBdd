@@ -1,7 +1,6 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
 import cart_page from "../pages/cart_page";
 
-
 Given("que estou na pagina do carrinho", () => {
     cart_page.inCartPage()
 })
@@ -33,7 +32,6 @@ When('clico em aplicar cupom', () => {
 When('clico para prosseguir com o checkout', () => {
     cart_page.goToCheckout()
 })
-
 
 Then("o produto é excluido", () => {
     cart_page.checkTrashProduct()

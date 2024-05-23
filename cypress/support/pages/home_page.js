@@ -1,12 +1,15 @@
 /// <reference types="cypress"/>
-
 import 'cypress-real-events/support';
 import { faker } from '@faker-js/faker';
 import utils from './utils'
 
 const elements = utils.elements
-
-
+const visibleCss = {
+    visibility: 'visible',
+    opacity: '1',
+    transform: 'none'
+};
+const footerNewsletter = 'footerNewsletter'
 
 // Functions
 // Função que torna os elementos escondidos do dropdown visiveis, invoca o css e altera as caracteristicas
@@ -19,18 +22,8 @@ function invokeCss(selector) {
     .should('be.visible', { timeout: 3000 }) // Garante que o elemento fique visivel, e aguarda até 3 segundos até que se torne visivel
 }
 
-const visibleCss = {
-    visibility: 'visible',
-    opacity: '1',
-    transform: 'none'
-};
-
-const footerNewsletter = 'footerNewsletter'
-
-
 // Usages
 export default{
-
     // General
         // URL
         // Verifica se a url esta correta, (URL base + a url esperada após o /)
@@ -41,12 +34,6 @@ export default{
         inHomePage(){
                 cy.visit('/')
         },
-
-        
-
-    
-
-        
 
     // Top Header
         // Shopping
@@ -65,8 +52,6 @@ export default{
                 .click()
         },
 
-        
-
         // Login
         // Verifica o funcionamento do botão de login e redirecionamento correto
         accessLoginPage(){
@@ -77,8 +62,6 @@ export default{
                 .click()
         },
 
-        
-
         // Cadastro
         // Verifica o funcionamento do botão de cadastro e redirecionamento correto
         accessRegisterPage() {
@@ -88,8 +71,6 @@ export default{
                 .should('exist')
                 .click()
         },
-
-        
 
     // Header
         // Botao QAZANDO
@@ -103,7 +84,6 @@ export default{
             cy.get(elements.buttons.qazandoLogo)
                 .click()
         },
-
 
         // Home
         // Checa o hover do dropdown home
@@ -120,7 +100,6 @@ export default{
             invokeCss('#item0')
             .click()
         },
-
 
         // Shop
         // Verifica se o dropdown do header da aba Shop está funcionando corretamente
@@ -143,7 +122,6 @@ export default{
                 .click()
         },
 
-
         // Pages
         // Verifica se o dropdown do header da aba Pages está funcionando corretamente
         checkDropdownPages(){
@@ -164,8 +142,6 @@ export default{
                 .should('be.visible', { timeout: 3000 })
                 .click()
         },
-
-        
 
     // Header/Wishlist
         openWishlistHeader(){
@@ -192,7 +168,6 @@ export default{
             .should('not.be.visible', { timeout: 3000 })
         },
 
-    
     // Header/Cart
         openCartlistHeader(){
             cy.get(elements.div.cartlistCounter)
@@ -301,6 +276,7 @@ export default{
             .find(elements.buttons.heart)
             .click()
         },
+
         viewTopProductsDetails(){
             cy.get(elements.div.topProductProduct)
             .first()
@@ -311,14 +287,17 @@ export default{
             .find(elements.buttons.eye)
             .click()
         },
+
         addTopProductToCartDetails(){
             cy.get(elements.buttons.modalProductAddCart)
             .click()
         },
+
         closeTopProductDetails(){
             cy.get(elements.buttons.closeModalDetailsIcon)
             .click() 
         },
+
         checkAddCartTopProductModal(){
             cy.get(elements.div.productAddModal)
             .should('be.visible')
@@ -328,6 +307,7 @@ export default{
             cy.get(elements.div.productAddModal)
             .should('not.exist', {timeout: 3000})
         },
+
         checkAddWishlistTopProductModal(){
             cy.get(elements.div.productAddModal)
             .should('be.visible')
@@ -339,6 +319,7 @@ export default{
             cy.get(elements.div.productAddModal)
             .should('not.exist', {timeout: 3000})
         },
+
         checkTopProductDetails(){
             cy.get(elements.div.productDetailsModal)
             .should('be.visible')
@@ -346,82 +327,88 @@ export default{
             cy.get(elements.div.productDetailsModal)
             .contains('Add To Cart')
         },
+
         checkTopProductDetailsClosed(){
             cy.get(elements.div.productDetailsModal)
             .should('not.exist', {timeout: 3000})
         },
       
-
-
     // Weekly Products
        checkModalWeeklyProducts(){
             cy.get(elements.div.weeklyProductsModal)
             .should('be.visible')
        }, 
+
        checkWeeklyProducts(){
             cy.get(elements.div.weeklyProducts)
             .should('be.visible')
        }, 
-
-
-
 
     // Footer
         goToFooter(){
             cy.get(elements.div.footer)
             .should('be.visible') 
         },
+
         footerInformationColumn(button){
             cy.get(elements.div.footerInformation)
             .contains(button)
             .click()
         },
+
         footerShopColumn(button){
             cy.get(elements.div.footerShop)
             .contains(button)
             .click()
         },
+
         footerNewsletter(){
             cy.get(elements.div.footerNewsletterColumn)
             .should('be.visible')
             .as(footerNewsletter)
         },
+
         sendEmailNewsletter(){
             cy.get(`@${footerNewsletter}`)
             .find(elements.buttons.default)
             .click()
         },
+
         footerTypeInvalidEmailNewsletter(){
             cy.get(`@${footerNewsletter}`)
             .find(elements.fields.newsletterLabel)
             .type('testeinvalido')
         },
+
         footerTypeValidEmailNewsletter(){
             cy.get(`@${footerNewsletter}`)
             .find(elements.fields.newsletterLabel)
             .type(faker.internet.email()) 
         },
+
         goToTopPage(){
             cy.scrollTo('bottom')
             .get(elements.buttons.top)
             .click()
             .wait(1000)
         },
+
         confirmationEmailModalDontVisible(){
             cy.get(elements.div.successIcon)
             .should('not.exist')
         },
+
         confirmationEmailModal(){
             cy.get(elements.div.successIcon)
             .should('be.visible')
         },
+
         checkInTopPage(){
             cy.window().then(win => {
                 expect(win.document.documentElement.scrollTop).to.lessThan(50);
             });
         },
       
-
     //Wishlist
         deleteFavoriteProduct(){
             cy.get(elements.div.wishlistModal)
@@ -433,23 +420,25 @@ export default{
                 });
               });
         },
+
         clickFavoriteProduct(){
             cy.get(elements.div.wishlistModal)
             .contains('Boho Tops for Girls')
             .click()
         },
+
         clickWishListButton(){
             cy.get(elements.div.wishlistModal)
             .find(elements.buttons.default)
             .click()
         },
+        
         checkWishlistEmpty(){
             cy.get(elements.div.wishlistModal)
             .get(elements.div.modalRightSideProduct)
             .should('not.be.visible', {timeout: 3000})
         },
         
-
     //Cartlist
         deleteCartlistProduct(){
             cy.get(elements.div.cartlistModal)

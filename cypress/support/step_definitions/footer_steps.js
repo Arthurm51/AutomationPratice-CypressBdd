@@ -1,8 +1,5 @@
 import { When, Then } from "@badeball/cypress-cucumber-preprocessor"
-import 'cypress-real-events/support';
 import home_page from "../pages/home_page";
-
-
 
 When("eu estou no footer", () => {
     home_page.goToFooter()
@@ -47,4 +44,3 @@ Then("o modal de email confirmado é visualizado", () => {
 Then("o usuario volta ao topo da página", () => {
     home_page.checkInTopPage()
 })
-

@@ -1,7 +1,6 @@
 import { When, Then } from "@badeball/cypress-cucumber-preprocessor"
 import home_page from "../pages/home_page.js"
 
-
 When("eu clico na lixeira da sacola", () => {
     home_page.deleteCartlistProduct()  
 })
@@ -21,4 +20,3 @@ When("eu clico no botao do checkout", () => {
 Then("o produto nao esta mais na sacola", () => {
     home_page.checkCartlistEmpty()
 })
-

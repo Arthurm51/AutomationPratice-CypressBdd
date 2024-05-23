@@ -9,6 +9,3 @@ Feature: Produtos da semana
     Scenario: Visualizar produtos da semana
         When acesso o modal de produtos da semana
         Then os produtos da semana sao apresentados
-
-    
-  

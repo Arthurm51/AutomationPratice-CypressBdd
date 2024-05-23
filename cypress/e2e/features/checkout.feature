@@ -3,7 +3,6 @@ Feature: Checkout
     Quero realizar o checkout corretamente
     Para ter o pedido feito
 
-
     Background: Acessar o checkout
         Given que estou na pagina do checkout
 

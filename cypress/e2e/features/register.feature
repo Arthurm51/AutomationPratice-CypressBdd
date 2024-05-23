@@ -6,7 +6,6 @@ Feature: Register
     Background: Estar na pagina de registro
         Given que estou na pagina de registro
 
-
     Scenario: Tentativa de cadastro sem preencher os campos
         When clico no botao registrar
         Then a mensagem de erro no cadastro "O campo nome deve ser prenchido" é apresentada

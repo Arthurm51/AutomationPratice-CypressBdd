@@ -1,13 +1,10 @@
 /// <reference types="cypress"/>
-
 import { faker } from '@faker-js/faker';
 import utils from './utils'
 
 const elements = utils.elements
 
-
 export default{
-
     inCheckoutPage(){
         cy.visit("/checkout-one")
     },
@@ -78,5 +75,4 @@ export default{
         cy.get(elements.div.successPurchaseModal)
         .should('not.exist', {timeout: 3000})
     }
-
 }

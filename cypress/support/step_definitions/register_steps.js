@@ -1,15 +1,6 @@
 /// <reference types="cypress"/>
-
-import 'cypress-real-events/support';
-import { faker } from '@faker-js/faker';
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
-import home_page from '../pages/home_page';
 import register_page from '../pages/register_page';
-import utils from '../pages/utils';
-
-const elements = utils.elements
-const validEmail = faker.internet.email()
-const validName = faker.person.fullName()
 
 Given("que estou na pagina de registro", () => {
     register_page.inRegisterPage()

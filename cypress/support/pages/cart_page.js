@@ -1,11 +1,8 @@
 /// <reference types="cypress"/>
-
 import utils from './utils'
 
 const elements = utils.elements
-
 let textoDaClasse;
-
 const secondProduct = 'tbody > :nth-child(2)'
 
 export default{
@@ -89,6 +86,4 @@ export default{
         cy.get(elements.div.errorModal)
         .should('not.exist', {timeout:3000})
     }
-
-
 }

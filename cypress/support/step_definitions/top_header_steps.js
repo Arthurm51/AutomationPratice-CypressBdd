@@ -14,7 +14,6 @@ Then("sou redirecionado para a página shopping", () => {
     home_page.checkUrl('/shop')
 })
 
-
 // Acessar Login
 When("eu clico no botão de login", () => {
     home_page.accessLoginPage()
@@ -23,7 +22,6 @@ When("eu clico no botão de login", () => {
 Then("sou redirecionado para a página de login", () => {
     home_page.checkUrl('/login')
 })
-
 
 // Acessar Cadastro
 When("eu clico no botao de cadastro", () => {

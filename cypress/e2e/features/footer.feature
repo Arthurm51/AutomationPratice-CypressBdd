@@ -20,7 +20,6 @@ Feature: Footer
             | Order Tracking | /order-tracking |
             | Compare | /compare |
 
-
     Scenario Outline: Acessar Paginas do Shop no Footer
         And eu clico no botao na coluna Shop "<nome_do_botao>"
         Then eu sou redirecionado para a URL "<url_esperada>"
@@ -54,4 +53,3 @@ Feature: Footer
     Scenario: Voltar ao topo da página
         And clicar no botao para voltar ao topo da pagina
         Then o usuario volta ao topo da página
-    

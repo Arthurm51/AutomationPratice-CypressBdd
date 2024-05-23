@@ -18,7 +18,6 @@ Feature: HomeTopProducts
         | Camera & Photo | #camera | Fossil Men's Quartz Watch |
         | Home & Garden | #home | New Apple AirPods Max |
 
-
     Scenario: Adicionar produto top na sacola
         And adiciono o produto na sacola
         Then o modal de produto adicionado na sacola é exibido e fechado

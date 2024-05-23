@@ -1,5 +1,4 @@
 Feature: TopHeader
-
     Eu como cliente
     Quero visualizar botões funcionais no topo da pagina
     Para acessar o login, cadastro e shop

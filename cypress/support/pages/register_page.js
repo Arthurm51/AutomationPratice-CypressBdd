@@ -1,17 +1,14 @@
 /// <reference types="cypress"/>
-
 import 'cypress-real-events/support';
 import { faker } from '@faker-js/faker';
 import utils from './utils'
 import home_page from './home_page';
-
 
 const elements = utils.elements
 const validEmail = faker.internet.email()
 const validName = faker.person.fullName()
 
 export default{
-
     inRegisterPage(){
         cy.visit('/register')
     },
@@ -48,5 +45,4 @@ export default{
         .get(elements.div.successModal)
         .contains(`Bem-vindo ${validName}`)
     },
-
 }

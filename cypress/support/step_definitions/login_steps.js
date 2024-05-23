@@ -2,9 +2,6 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
 import home_page from "../pages/home_page.js"
 import login_page from "../pages/login_page.js"
 
-
-
-
 Given("eu estou na pagina de login", () => {
     login_page.inLoginPage()
 })

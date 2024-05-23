@@ -29,8 +29,6 @@ export default{
             cartGeneral: '.btn_sm',
             checkout: '.order_review .theme-btn-one',
             closeModalCheckout: '.modal-content .close'
-
-    
         },
         fields: {
             name: '#user',
@@ -47,9 +45,6 @@ export default{
             zipCode: '#zip',
             fullAddress: '#faddress',
             message: '#messages',
-
-            
-    
         },
         div: {
             topHeaderShop: '.top_header_left',
@@ -96,7 +91,6 @@ export default{
             paypalPayment: '#css',
             addressSavedMessage: '.checkout-area-bg .check-out-form > h3',
             successPurchaseModal: '.modal-content .col-lg-12',
-            
         }
     }
 }

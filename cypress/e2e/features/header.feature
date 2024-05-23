@@ -50,7 +50,6 @@ Feature: Header
             | Frequently Questions | /faqs |
             | Login | /login |
 
-
     Scenario: Abrir modal favoritos
         When eu clico no botao de favoritos
         Then eu visualizo os favoritos
