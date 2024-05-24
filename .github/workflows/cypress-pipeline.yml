@@ -14,6 +14,11 @@ jobs:
       - name: Checkout/Clone do projeto # clone do projeto
         uses: actions/checkout@v3
 
+      - name: Use Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          
       - name: Run tests #execução e configuração do projeto
         uses: cypress-io/github-action@v5
         with:
