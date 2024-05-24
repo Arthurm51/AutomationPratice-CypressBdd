@@ -1,0 +1,35 @@
+# nome da pipeline
+name: run basic tests - Scheduler
+
+# , = separa para rodar valores em uma lista
+# * = todos
+# - = range de valores
+# 5 parametros |minuto| hora | dia do mes  |  mes   | dia da semana
+#              |0 - 59| 0-23 |   1 - 31 *  | 1-12 * | 0 - 6 *
+on:
+  schedule:
+    - cron: '0 19 * * *'
+
+
+# o que vai ser feito nessa pipeline
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest # maquina que será executada
+    steps: # passo a passo para rodar os testes
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Checkout/Clone do projeto # clone do projeto
+        uses: actions/checkout@v4
+
+      - name: Run tests #execução e configuração do projeto
+        uses: cypress-io/github-action@v6
+        with:
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY  }}
+
+      - name: Instalar dependencias do projeto
+        run: npm install # executa no terminal
