@@ -12,8 +12,8 @@ module.exports = defineConfig({
     inlineAssets: true,
     saveAllAttempts: false,
   },
-  screenshotsFolder: "mochawesome-report/assets",
-  
+  screenshotsFolder: "cypress/results/assets",
+
   projectId: '8pfwri',
   
   viewportHeight: 960,
