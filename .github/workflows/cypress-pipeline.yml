@@ -28,10 +28,3 @@ jobs:
 
       - name: Instalar dependencias do projeto
         run: npm install # executa no terminal
-
-      # upload do relatorio do mocha
-      # - name: upload relatorio mocha
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: Relatorio
-      #     path: cypress/results/assets
