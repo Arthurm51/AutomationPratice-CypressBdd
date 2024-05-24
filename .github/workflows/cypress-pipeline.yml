@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest # maquina que será executada
     steps: # passo a passo para rodar os testes
       - name: Use Node.js 20
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -30,8 +30,8 @@ jobs:
         run: npm install # executa no terminal
 
       # upload do relatorio do mocha
-      - name: upload relatorio mocha
-        uses: actions/upload-artifact@v4
-        with:
-          name: Relatorio
-          path: cypress/results/assets
+      # - name: upload relatorio mocha
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: Relatorio
+      #     path: cypress/results/assets
