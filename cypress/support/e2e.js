@@ -15,6 +15,20 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+import 'cypress-mochawesome-reporter/register';
+import addContext from 'mochawesome/addContext'
 
+Cypress.on("test:after:run", (test, runnable) => {
+    // se o teste falhar, adiciona a imagem da falha ao relatório
+    if(test.state === 'failed') {
+      const screenshotFileName = `${runnable.parent.title} -- ${test.title} (failed).png`;
+      addContext({ test }, `assets/${Cypress.spec.name}/${screenshotFileName}`);
+    }
+    
+    let videoName = Cypress.spec.name
+    videoName = `${videoName.replace('/.js.*', 'js')}.mp4`
+    addContext({ test }, `videos/${videoName}`);
+    
+})
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

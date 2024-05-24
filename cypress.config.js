@@ -4,6 +4,16 @@ const { addCucumberPreprocessorPlugin } = require("@badeball/cypress-cucumber-pr
 const { createEsbuildPlugin } = require("@badeball/cypress-cucumber-preprocessor/esbuild")
 
 module.exports = defineConfig({
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: 'custom-title',
+    embeddedScreenshots: true, 
+    inlineAssets: true,
+    saveAllAttempts: false,
+  },
+  screenshotsFolder: "mochawesome-report/assets",
+  
   projectId: '8pfwri',
   
   viewportHeight: 960,
@@ -16,6 +26,8 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
       addCucumberPreprocessorPlugin(on, config);
+
+      require('cypress-mochawesome-reporter/plugin')(on);
 
       on(
         "file:preprocessor",
